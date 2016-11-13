@@ -210,4 +210,13 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    
+    
+    
+    public function actionSaludar($palabra='chau')
+    {
+        
+
+        return $this->render('saludar',['mensaje' =>$palabra]);
+    }
 }
