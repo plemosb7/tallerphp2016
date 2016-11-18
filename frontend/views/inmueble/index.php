@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\search\InmuebleSearch */
@@ -36,8 +37,18 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'patio',
             // 'latitud',
             // 'longitud',
+            // 'foto1',
+            // 'foto2',
+            // 'foto3',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    
+    <?=
+    ListView::widget([
+        'dataProvider' => $dataProvider,
+    ]);
+    ?>
+    
 </div>

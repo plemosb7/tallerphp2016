@@ -39,6 +39,12 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'longitud') ?>
 
+    <?php // echo $form->field($model, 'foto1') ?>
+
+    <?php // echo $form->field($model, 'foto2') ?>
+
+    <?php // echo $form->field($model, 'foto3') ?>
+
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>

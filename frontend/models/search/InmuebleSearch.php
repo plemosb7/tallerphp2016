@@ -19,7 +19,7 @@ class InmuebleSearch extends Inmueble
     {
         return [
             [['id', 'tipoInmueble_id', 'idCliente', 'cantDorm', 'cantBanos', 'supTotal', 'supEdificada', 'garage', 'patio'], 'integer'],
-            [['nombre'], 'safe'],
+            [['nombre', 'foto1', 'foto2', 'foto3'], 'safe'],
             [['latitud', 'longitud'], 'number'],
         ];
     }
@@ -73,7 +73,10 @@ class InmuebleSearch extends Inmueble
             'longitud' => $this->longitud,
         ]);
 
-        $query->andFilterWhere(['like', 'nombre', $this->nombre]);
+        $query->andFilterWhere(['like', 'nombre', $this->nombre])
+            ->andFilterWhere(['like', 'foto1', $this->foto1])
+            ->andFilterWhere(['like', 'foto2', $this->foto2])
+            ->andFilterWhere(['like', 'foto3', $this->foto3]);
 
         return $dataProvider;
     }

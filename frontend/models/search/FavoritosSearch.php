@@ -5,12 +5,12 @@ namespace frontend\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\TipoInmueble;
+use common\models\Favoritos;
 
 /**
- * TipoInmuebleSearch represents the model behind the search form about `common\models\TipoInmueble`.
+ * FavoritosSearch represents the model behind the search form about `common\models\Favoritos`.
  */
-class TipoInmuebleSearch extends TipoInmueble
+class FavoritosSearch extends Favoritos
 {
     /**
      * @inheritdoc
@@ -18,8 +18,7 @@ class TipoInmuebleSearch extends TipoInmueble
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['nombre'], 'safe'],
+            [['cliente_id', 'inmueble_id'], 'integer'],
         ];
     }
 
@@ -41,7 +40,7 @@ class TipoInmuebleSearch extends TipoInmueble
      */
     public function search($params)
     {
-        $query = TipoInmueble::find();
+        $query = Favoritos::find();
 
         // add conditions that should always apply here
 
@@ -59,10 +58,9 @@ class TipoInmuebleSearch extends TipoInmueble
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
+            'cliente_id' => $this->cliente_id,
+            'inmueble_id' => $this->inmueble_id,
         ]);
-
-        $query->andFilterWhere(['like', 'nombre', $this->nombre]);
 
         return $dataProvider;
     }

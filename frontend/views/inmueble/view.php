@@ -40,6 +40,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'patio',
             'latitud',
             'longitud',
+            'foto1',
+            'foto2',
+            'foto3',
         ],
     ]) ?>
 

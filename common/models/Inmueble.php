@@ -19,7 +19,11 @@ use Yii;
  * @property integer $patio
  * @property double $latitud
  * @property double $longitud
+ * @property string $foto1
+ * @property string $foto2
+ * @property string $foto3
  *
+ * @property Favoritos $favoritos
  * @property TipoInmueble $tipoInmueble
  * @property User $idCliente0
  */
@@ -42,7 +46,7 @@ class Inmueble extends \yii\db\ActiveRecord
             [['nombre', 'tipoInmueble_id', 'idCliente'], 'required'],
             [['tipoInmueble_id', 'idCliente', 'cantDorm', 'cantBanos', 'supTotal', 'supEdificada', 'garage', 'patio'], 'integer'],
             [['latitud', 'longitud'], 'number'],
-            [['nombre'], 'string', 'max' => 30],
+            [['nombre', 'foto1', 'foto2', 'foto3'], 'string', 'max' => 30],
             [['tipoInmueble_id'], 'exist', 'skipOnError' => true, 'targetClass' => TipoInmueble::className(), 'targetAttribute' => ['tipoInmueble_id' => 'id']],
             [['idCliente'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idCliente' => 'id']],
         ];
@@ -66,7 +70,18 @@ class Inmueble extends \yii\db\ActiveRecord
             'patio' => 'Patio',
             'latitud' => 'Latitud',
             'longitud' => 'Longitud',
+            'foto1' => 'Foto1',
+            'foto2' => 'Foto2',
+            'foto3' => 'Foto3',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFavoritos()
+    {
+        return $this->hasOne(Favoritos::className(), ['inmueble_id' => 'id']);
     }
 
     /**

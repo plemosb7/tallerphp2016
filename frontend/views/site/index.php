@@ -1,5 +1,5 @@
 <?php
-
+use yii\widgets\ListView;
 $this->registerJsFile( 
     'tallerphp2016/frontend/web/js/main.js', 
     ['depends' => '\yii\web\JqueryAsset']
@@ -21,9 +21,28 @@ $this->title = 'My Yii Application';
 
     <div class="body-content">
 
-        <div class="row">
-            
-        </div>
+    <?=
+    ListView::widget([
+        'dataProvider' => $dataProvider,
+        'itemView'=>'item-view',
+        'pager' => [
+        'firstPageLabel' => 'first',
+        'lastPageLabel' => 'last',
+        'prevPageLabel' => 'previous',
+        'nextPageLabel' => 'next',
+    ],
+        
+        'options' => [
+        'tag' => 'div',
+        'class' => 'list-wrapper',
+        'id' => 'list-wrapper',
+    ],
+    ]);
+    ?>       
+        
+        
+  
+    </div>
 
     </div>
 </div>

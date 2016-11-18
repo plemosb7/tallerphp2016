@@ -72,7 +72,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+//        $searchModel = new TipoInmuebleSearch();
+        $dataProvider = new ActiveDataProvider([
+    'query' => User::find(),
+    'pagination' => array('pageSize' => 5),
+]);
+        return $this->render('index',['dataProvider' => $dataProvider,]);
     }
 
     /**

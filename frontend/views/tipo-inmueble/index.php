@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\search\TipoInmuebleSearch */
@@ -28,4 +29,23 @@ $this->params['breadcrumbs'][] = $this->title;
            
         ],
     ]); ?>
+    
+    <?=
+    ListView::widget([
+        'dataProvider' => $dataProvider,
+        
+        'itemView'=>'item-view',
+        'pager' => [
+        'firstPageLabel' => 'first',
+        'lastPageLabel' => 'last',
+        'prevPageLabel' => 'previous',
+        'nextPageLabel' => 'next',
+    ],
+        'options' => [
+        'tag' => 'div',
+        'class' => 'list-wrapper',
+        'id' => 'list-wrapper',
+    ],
+    ]);
+    ?>
 </div>

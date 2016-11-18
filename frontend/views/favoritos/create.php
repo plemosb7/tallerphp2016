@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Inmueble */
+/* @var $model common\models\Favoritos */
 
-$this->title = 'Create Inmueble';
-$this->params['breadcrumbs'][] = ['label' => 'Inmuebles', 'url' => ['index']];
+$this->title = 'Create Favoritos';
+$this->params['breadcrumbs'][] = ['label' => 'Favoritos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="inmueble-create">
+<div class="favoritos-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
