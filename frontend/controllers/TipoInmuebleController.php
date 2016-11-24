@@ -8,6 +8,7 @@ use frontend\models\search\TipoInmuebleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\ActiveDataProvider;
 
 /**
  * TipoInmuebleController implements the CRUD actions for TipoInmueble model.
@@ -36,7 +37,13 @@ class TipoInmuebleController extends Controller
     public function actionIndex()
     {
         $searchModel = new TipoInmuebleSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+//        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider=new ActiveDataProvider([
+    'query' => TipoInmueble::find(),
+    'pagination' => [
+        'pageSize' => 6,
+    ],
+]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,

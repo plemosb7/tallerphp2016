@@ -14,27 +14,21 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="tipo-inmueble-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('Create Tipo Inmueble', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-        
-    <?=
-    ListView::widget([
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'itemView'=>'item-view',
-        'pager' => [
-        'firstPageLabel' => 'first',
-        'lastPageLabel' => 'last',
-        'prevPageLabel' => 'previous',
-        'nextPageLabel' => 'next',
-    ],
-        'options' => [
-        'tag' => 'div',
-        'class' => 'list-wrapper',
-        'id' => 'list-wrapper',
-    ],
-    ]);
-    ?>
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['attribute'=>'id','label'=>'codigo'],
+            'nombre',
+            ['class' => 'yii\grid\ActionColumn'],
+           
+        ],
+    ]); ?>
+    
+    
 </div>

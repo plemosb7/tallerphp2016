@@ -8,10 +8,16 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\models\User;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yii\data\ActiveDataProvider;
+use common\models\TipoInmueble;
+use common\models\Inmueble;
+use frontend\models\search\InmuebleSearch;
+
 
 /**
  * Site controller
@@ -72,12 +78,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-//        $searchModel = new TipoInmuebleSearch();
-        $dataProvider = new ActiveDataProvider([
-    'query' => User::find(),
-    'pagination' => array('pageSize' => 5),
-]);
-        return $this->render('index',['dataProvider' => $dataProvider,]);
+        $model=new TipoInmueble();
+        $searchModel = new \frontend\models\search\TipoInmuebleSearch();
+        $dataProvider=$searchModel->search(Yii::$app->request->queryParams);
+//        $dataProvider = new ActiveDataProvider([
+//    'query' => TipoInmueble::find(),
+//    'pagination' => array('pageSize' => 5),
+//    ]);
+        return $this->render('index',['dataProvider' => $dataProvider,'searchModel'=>$searchModel,'model'=>$model]);
     }
 
     /**

@@ -32,6 +32,9 @@ class Inmueble extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $image;
+    
+    
     public static function tableName()
     {
         return 'inmueble';
@@ -49,6 +52,9 @@ class Inmueble extends \yii\db\ActiveRecord
             [['nombre', 'foto1', 'foto2', 'foto3'], 'string', 'max' => 30],
             [['tipoInmueble_id'], 'exist', 'skipOnError' => true, 'targetClass' => TipoInmueble::className(), 'targetAttribute' => ['tipoInmueble_id' => 'id']],
             [['idCliente'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['idCliente' => 'id']],
+//            [['image'], 'safe'],
+//            [['image'], 'file', 'extensions'=>'jpg, gif, png'],
+//            [['image'], 'file', 'maxSize'=>'100000000000'],
         ];
     }
 

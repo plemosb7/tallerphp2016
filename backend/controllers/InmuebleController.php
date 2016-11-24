@@ -8,6 +8,7 @@ use backend\models\search\InmuebleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * InmuebleController implements the CRUD actions for Inmueble model.
@@ -66,12 +67,69 @@ public function behaviors()
         $model = new Inmueble();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->image=UploadedFile::getInstances($model, 'image');;
+//            $image = UploadedFile::getInstances($model, 'image[]');
+            $contImagenes=0;
+            foreach ($model->image as $key=>$value) {
+              // generate a unique file name to prevent duplicate filenames
+              $contImagenes++;
+              if($contImagenes==1){
+                $ext = end((explode(".", $value->name)));
+              
+                $model->foto1 = $model->id."_1.{$ext}";
+                Yii::$app->params['uploadPath'] = Yii::$app->basePath . '/imagenes/';
+                $path = Yii::$app->params['uploadPath'] . $model->foto1;
+                $value->saveAs($path);
+                $model->save();
+                
+             }
+              if($contImagenes==2){
+                $ext = end((explode(".", $value->name)));
+              
+                  $model->foto2 = $model->id."_2.{$ext}";
+                Yii::$app->params['uploadPath'] = Yii::$app->basePath . '/imagenes/';
+                $path = Yii::$app->params['uploadPath'] . $model->foto2;
+                $value->saveAs($path);
+                $model->save();
+              }
+              if($contImagenes==3){
+                $ext = end((explode(".", $value->name)));
+              
+                  $model->foto3 = $model->id."_3.{$ext}";
+                Yii::$app->params['uploadPath'] = Yii::$app->basePath . '/imagenes/';
+                $path = Yii::$app->params['uploadPath'] . $model->foto3;
+                $value->saveAs($path);
+                $model->save();
+              }
+              // the path to save file, you can set an uploadPath
+              // in Yii::$app->params (as used in example below)                       
+              
+            }
+//            if (!is_null($image)) {
+//             $ext = end((explode(".", $image->name)));
+//              // generate a unique file name to prevent duplicate filenames
+//              $model->foto1 = $model->id.".{$ext}";
+//              // the path to save file, you can set an uploadPath
+//              // in Yii::$app->params (as used in example below)                       
+//              Yii::$app->params['uploadPath'] = Yii::$app->basePath . '/imagenes/';
+//              $path = Yii::$app->params['uploadPath'] . $model->foto1;
+//              $image->saveAs($path);
+//              $model->save();
+//                
+//            }
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+            
+        } 
+        else{
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
+        
+        
+        
+            
+        
     }
 
     /**

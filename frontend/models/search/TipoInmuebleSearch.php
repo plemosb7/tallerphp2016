@@ -47,6 +47,7 @@ class TipoInmuebleSearch extends TipoInmueble
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => array('pageSize' => 6),
         ]);
 
         $this->load($params);
