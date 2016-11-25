@@ -18,28 +18,11 @@ $this->title = 'My Yii Application';
 
        
 
-   
-    
-    <?=
-    ListView::widget([
-        'dataProvider' => $dataProvider,
-        'itemView'=>'item-view',
-//        'pager' => [
-//        'firstPageLabel' => 'first',
-//        'lastPageLabel' => 'last',
-//        'prevPageLabel' => 'previous',
-//        'nextPageLabel' => 'next',
-//    ],
-        
-//        'options' => [
-//        'tag' => 'div',
-//        'class' => 'list-wrapper',
-//        'id' => 'list-wrapper',
-//    ],
-    ]);
-    ?>       
-        
-        
+   <div class="row">
+  
+</div>
+
+
   
    
 

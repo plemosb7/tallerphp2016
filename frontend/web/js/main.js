@@ -1,4 +1,4 @@
-var apiRoot = 'http://saso.local/tallerphp2016/api/v1';
+var apiRoot = 'http://localhost/tallerphp2016/api/v1';
 
 $("document").ready(function(){ 
   var accessToken = $('#accessToken').val();
@@ -8,22 +8,41 @@ $("document").ready(function(){
         xhr.setRequestHeader ("Authorization", "Bearer " + accessToken);
     },
     method: "GET",
-    url: apiRoot + "/autos"
+    url: apiRoot + "/inmueble"
   })
-  .done(function( autos ) {
-    console.log(autos);
+  .done(function( inmuebles ) {
+    console.log(inmuebles);
 
-    $.each(autos, function(index, auto) {
+    $.each(inmuebles, function(index, inmueble) {
       
-       let html = '<div class="col-lg-4">';
-         html += '<h2>' + auto.marca + '</h2>';
-         html += '<p>' + auto.modelo + '</p>'; 
-         html += '<p> <a class="btn btn-default">' + auto.anio + '</a></p>';
-         html += '</div>';
+       
+       
+       let html = '<div class="row">';     
+        
+        html+='<div class="col-sm-3 col-md-2">'
+    html+='<div class="thumbnail">'
+      html+='<img src="..." alt="...">'
+      html+='<div class="caption">'
+       html+=' <h3>'+inmueble.nombre+'</h3>'
+       html+=' <p>...</p>'
+        html+='<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>'
+     html+=' </div>'
+   html+=' </div>'
+ html+=' </div>'
+        
+       
 
-         $('.body-content .row').append(html);
+         $('.row').append(html);
 
+       
+    
+    
+    
     });
+  
+    
+    
+    
 
   });
 
