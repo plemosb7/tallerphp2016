@@ -23,7 +23,7 @@ return [
         'enableUnconfirmedLogin' => true,
         'confirmWithin' => 21600,
         'cost' => 12,
-        'admins' => ['emino367']
+        'admins' => ['emino367','plemosb7']
         ],
     ]
 ];

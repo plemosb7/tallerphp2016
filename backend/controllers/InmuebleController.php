@@ -80,7 +80,7 @@ public function behaviors()
     public function actionCreate()
     {
         $model = new Inmueble();
-        $model->idCliente=Yii::$app->user->getIsAdmin();
+        $model->idCliente=Yii::$app->user->identity->isAdmin;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->image=UploadedFile::getInstances($model, 'image');;
 //            $image = UploadedFile::getInstances($model, 'image[]');
