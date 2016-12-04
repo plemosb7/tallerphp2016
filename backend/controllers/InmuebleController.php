@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Inmueble;
+//use common\models\User;
 use backend\models\search\InmuebleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -44,6 +45,20 @@ public function behaviors()
             'dataProvider' => $dataProvider,
         ]);
     }
+    
+    public function actionMisinmuebles()
+    {
+        $searchModel = new InmuebleSearch();
+//        Yii::$app->request->queryParams->id=Yii::$app->user->id;
+        $params=Yii::$app->request->queryParams;
+        $params=array_replace($params, ['idCliente'=>Yii::$app->user->id]);
+        $dataProvider = $searchModel->search($params);
+        
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
     /**
      * Displays a single Inmueble model.
@@ -65,7 +80,7 @@ public function behaviors()
     public function actionCreate()
     {
         $model = new Inmueble();
-
+        $model->idCliente=Yii::$app->user->getIsAdmin();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->image=UploadedFile::getInstances($model, 'image');;
 //            $image = UploadedFile::getInstances($model, 'image[]');

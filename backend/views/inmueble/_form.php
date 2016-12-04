@@ -19,8 +19,9 @@ use kartik\file\FileInput;
 
     <?= $form->field($model, 'tipoInmueble_id')->dropDownList(ArrayHelper::map(\common\models\TipoInmueble::find()->all(),'id','nombre')) ?>
 
-    <?=$form->field($model, 'idCliente')->dropDownList(ArrayHelper::map(\common\models\User::find()->all(),'id','username'))?>
-
+   <!--if(Yii::$app->user->identity->isAdmin) {-->
+    <?=$form->field($model, 'idCliente')->dropDownList([ArrayHelper::map(\common\models\User::find()->all(),'id','username')],[options=>['visible'=>'false']] )?>
+    <!--<?$form->field($model, 'idCliente')->dropDownList([ArrayHelper::map(\common\models\User::find()->all(),'id','username')])?>-->
     <?= $form->field($model, 'cantDorm')->dropDownList([1,2,3,4,5,6,7,8,9], 
              ['prompt'=>'- seleccione dormitorios-']) ?>
 

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "483a3195c0c3210736ea6eeab6912d81",
-    "content-hash": "bfdae9d141b7f077ccb089453801fc2a",
+    "hash": "dbfb48879d6580731e7020ed3a0f624e",
+    "content-hash": "979370e3129259eba4fc6d7f108ef6e1",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -340,16 +340,16 @@
         },
         {
             "name": "dektrium/yii2-user",
-            "version": "dev-master",
+            "version": "0.9.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dektrium/yii2-user.git",
-                "reference": "a908ab3652668c6f2755052098dac09a8c6de6f4"
+                "reference": "d9530a1b4213c2bd7fd8eb05d185dfe9dffde558"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dektrium/yii2-user/zipball/a908ab3652668c6f2755052098dac09a8c6de6f4",
-                "reference": "a908ab3652668c6f2755052098dac09a8c6de6f4",
+                "url": "https://api.github.com/repos/dektrium/yii2-user/zipball/d9530a1b4213c2bd7fd8eb05d185dfe9dffde558",
+                "reference": "d9530a1b4213c2bd7fd8eb05d185dfe9dffde558",
                 "shasum": ""
             },
             "require": {
@@ -394,7 +394,7 @@
                 "yii2",
                 "yii2-user"
             ],
-            "time": "2016-09-22 15:04:36"
+            "time": "2016-08-13 15:45:38"
         },
         {
             "name": "dmstr/yii2-adminlte-asset",
@@ -1517,9 +1517,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "dektrium/yii2-user": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
