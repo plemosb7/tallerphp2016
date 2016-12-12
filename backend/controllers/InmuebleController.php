@@ -51,7 +51,8 @@ public function behaviors()
         $searchModel = new InmuebleSearch();
 //        Yii::$app->request->queryParams->id=Yii::$app->user->id;
         $params=Yii::$app->request->queryParams;
-        $params=array_replace($params, ['idCliente'=>Yii::$app->user->id]);
+//        $params=array_replace($params, ['idCliente'=>Yii::$app->user->id]);
+        $params=array_replace($params, ['id'=>1]);
         $dataProvider = $searchModel->search($params);
         
         return $this->render('index', [
@@ -80,7 +81,7 @@ public function behaviors()
     public function actionCreate()
     {
         $model = new Inmueble();
-        $model->idCliente=Yii::$app->user->identity->isAdmin;
+        $model->idCliente=Yii::$app->user->id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->image=UploadedFile::getInstances($model, 'image');;
 //            $image = UploadedFile::getInstances($model, 'image[]');

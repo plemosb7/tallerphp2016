@@ -7,6 +7,9 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
 
+
+use voime\GoogleMaps\MapInput;
+
 /**
  * Site controller
  */
@@ -26,7 +29,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index','mapa'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -94,6 +97,10 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+    public function actionMapa(){
+//        $model= new MapInput();
+        return $this->render('mapa');
     }
     
     

@@ -1,3 +1,6 @@
+<?php 
+use yii\helpers\Html;
+?>
 <aside class="main-sidebar">
     <section class="sidebar">
 
@@ -17,9 +20,11 @@
         echo Yii::$app->user->identity->username;
         echo '</p>
 
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                
             </div>
         </div> ';
+        
+//        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         
         
         }
@@ -32,7 +37,7 @@
         ?>
         
         <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
+<!--        <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="Search..."/>
               <span class="input-group-btn">
@@ -40,9 +45,16 @@
                 </button>
               </span>
             </div>
-        </form>
+        </form>-->
         <!-- /.search form -->
-
+        <?php if(((!Yii::$app->user->isGuest)&&Yii::$app->user->identity->isAdmin)){
+        echo Html::a(
+                                        'Sign out',
+                                        ['/site/logout'],
+                                        ['data-method' => 'post', 'class' => 'label']
+                                    ); 
+                                    
+                                    }?>
         <?= dmstr\widgets\Menu::widget(
             [
                 'options' => ['class' => 'sidebar-menu'],
@@ -50,38 +62,13 @@
 //                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
 //                    ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
 //                    ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug']],
-                    ['label' => 'Login', 'url' => ['user/security/login'], 'visible' => Yii::$app->user->isGuest],
-                    ['label' => 'Cerrar Sesion', 'url' => ['site/logout'], 'visible' => !Yii::$app->user->isGuest],
-                    ['label' => 'Usuarios', 'url' => ['user/admin/index'], 'visible' => ((!Yii::$app->user->isGuest)&&Yii::$app->user->identity->isAdmin)],
-                    ['label' => 'Inmuebles', 'url' => ['inmueble/index'], 'visible' => ((!Yii::$app->user->isGuest)&&Yii::$app->user->identity->isAdmin)],
-                    ['label' => 'Mis Inmuebles', 'url' => ['inmueble/misinmuebles'], 'visible' => !Yii::$app->user->isGuest],
-                    ['label' => 'Publicar Inmueble', 'url' => ['inmueble/create'], 'visible' => !Yii::$app->user->isGuest],
-                    [
-                        'label' => 'Same tools',
-                        'icon' => 'fa fa-share',
-                        'url' => '#',
-                        'items' => [
-                            ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii'],],
-                            ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug'],],
-                            [
-                                'label' => 'Level One',
-                                'icon' => 'fa fa-circle-o',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'Level Two', 'icon' => 'fa fa-circle-o', 'url' => '#',],
-                                    [
-                                        'label' => 'Level Two',
-                                        'icon' => 'fa fa-circle-o',
-                                        'url' => '#',
-                                        'items' => [
-                                            ['label' => 'Level Three', 'icon' => 'fa fa-circle-o', 'url' => '#',],
-                                            ['label' => 'Level Three', 'icon' => 'fa fa-circle-o', 'url' => '#',],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
+                    ['label' => 'Login', 'url' => ['/user/security/login'], 'visible' => Yii::$app->user->isGuest],
+                    ['label' => 'Usuarios', 'url' => ['/user/admin/index'], 'visible' => ((!Yii::$app->user->isGuest)&&Yii::$app->user->identity->isAdmin)],
+                    ['label' => 'Inmuebles', 'url' => ['/inmueble/index'], 'visible' => ((!Yii::$app->user->isGuest)&&Yii::$app->user->identity->isAdmin)],
+                    ['label' => 'Tipos Inmuebles', 'url' => ['/tipo-inmueble/index'], 'visible' => ((!Yii::$app->user->isGuest)&&Yii::$app->user->identity->isAdmin)],
+                    ['label' => 'Mis Inmuebles', 'url' => ['/inmueble/misinmuebles'], 'visible' => !Yii::$app->user->isGuest],
+                    ['label' => 'Publicar Inmueble', 'url' => ['/inmueble/create'], 'visible' => !Yii::$app->user->isGuest],
+                    
                 ],
             ]
         ) ?>
