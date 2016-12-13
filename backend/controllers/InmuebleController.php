@@ -51,8 +51,8 @@ public function behaviors()
         $searchModel = new InmuebleSearch();
 //        Yii::$app->request->queryParams->id=Yii::$app->user->id;
         $params=Yii::$app->request->queryParams;
+        $params=array_replace($params, ['idCliente'=>Yii::$app->user->id]);
 //        $params=array_replace($params, ['idCliente'=>Yii::$app->user->id]);
-        $params=array_replace($params, ['id'=>1]);
         $dataProvider = $searchModel->search($params);
         
         return $this->render('index', [

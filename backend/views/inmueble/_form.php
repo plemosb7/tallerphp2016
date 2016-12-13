@@ -80,7 +80,8 @@ function myMap() {
 //    marker.setMap(map);
   google.maps.event.addListener(map, 'click', function(event) {
 //   placeMarker(map, event.latLng);
-   var marker = new google.maps.Marker({position: event.latLng});
+    marker.setMap(null);
+   marker = new google.maps.Marker({position: event.latLng});
 
     marker.setMap(map);
     document.getElementById('inmueble-latitud').setAttribute('value',event.latLng.lat());
