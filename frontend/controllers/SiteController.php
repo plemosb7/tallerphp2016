@@ -87,6 +87,12 @@ class SiteController extends Controller
 //    ]);
         return $this->render('index',['dataProvider' => $dataProvider,'searchModel'=>$searchModel,'model'=>$model]);
     }
+    
+    public function actionBuscarinmueble($id){
+        return $this->render('inmueble',['id'=>$id]);
+        
+    }
+    
 
     /**
      * Logs in a user.

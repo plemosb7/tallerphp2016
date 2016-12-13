@@ -25,7 +25,7 @@ $("document").ready(function(){
        
        let html = '<div>';     
         
-        html+='<div class="col-sm-3 col-md-3" >'
+        html+='<div class="col-sm-3 col-md-3">'
         html+='<div class="thumbnail">'
         if((foto1!=null) || (foto2!=null) || (foto3!=null)){
         html+='<div id="carousel-example-generic'+inmueble.id+'" class="carousel slide" data-ride="carousel">'
@@ -44,7 +44,7 @@ $("document").ready(function(){
         }
         html+='</ol>'
         
-        html+='<a href="index.php?r=site/signup">'
+        html+='<a href="index.php?r=site/buscarinmueble&id='+inmueble.id+'">'
         html+='<div class="carousel-inner" role="listbox">'
         html+='<div class="item active">'
         html+='<img src="'+urlFoto1+'"class="img-responsive" >'
@@ -84,7 +84,7 @@ $("document").ready(function(){
         
         html+=' <h3>'+inmueble.nombre+'</h3>'
         html+=' <p>'+inmueble.id+'</p>'
-        html+='<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>'
+       
         html+=' </div>'
         html+=' </div>'
         html+=' </div>'
@@ -92,11 +92,6 @@ $("document").ready(function(){
          $('.row').append(html);
 
     });
-  
-    
-    
-    
-
-  });
+ });
 
 });
