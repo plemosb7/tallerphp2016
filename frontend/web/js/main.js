@@ -9,10 +9,15 @@ $("document").ready(function(){
     },
     method: "GET",
     url: apiRoot + "/inmueble"
+    
+    
+    'GET v1/inmueble/search2'    => 'v1/inmueble/search2',
   })
+  
   .done(function( inmuebles ) {
     console.log(inmuebles);
 
+        
     $.each(inmuebles, function(index, inmueble) {
       
        var url = "../../backend/imagenes/";
@@ -81,13 +86,15 @@ $("document").ready(function(){
         html+='</div>'
         html+='<div class="caption">'
     }
-        
+        html+='<a href="index.php?r=site/buscarinmueble&id='+inmueble.id+'">'
         html+=' <h3>'+inmueble.nombre+'</h3>'
-        html+=' <p>'+inmueble.id+'</p>'
-       
+        html+='</a>'
         html+=' </div>'
         html+=' </div>'
         html+=' </div>'
+     
+     
+    
      
          $('.row').append(html);
 

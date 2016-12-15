@@ -17,36 +17,44 @@ $this->title = 'Taller de PHP 2016';
     </style>
     
     <script>
+    
+          var myLatLng = {lat: -34.9036100, lng: -56.1640446};
+          var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: mapa,
+        title: 'Marcador con el nombre'
+        });
+         
     function initMap() {
-          
-          
+//          
+      
         // Create a map object and specify the DOM element for display.
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.9036100, lng: -56.1640446}, 
           scrollwheel: false,
           zoom: 13
         });
-             
-     ubicacion(map);
-  }    
-  
-  function ubicacion(map){
-      var myLatLng = {lat: -34.9036100, lng: -56.1640446};
-      var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Marcador con el nombre'
-      });
+        
       
-  }
+  }   
 </script>
    
     
-<form name="buscador" method="post" action="index.php?r=site/buscador">
+<form name="buscador" method="post" action="index.php">
     Nombre:<input type="text" name="nombre" value="">
     <input type="submit"/>
     
 </form>
+
+
+<?php
+    $nombre = $_POST['nombre'];
+    echo $nombre;
+
+?>
+
+
+
   <body>
    <div class="row2">
    <div class="col-xs-3">

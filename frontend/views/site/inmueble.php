@@ -18,7 +18,7 @@ $this->title = 'My Yii Application';
     <script>
        function initMap() {
           var myLatLng = {lat: document.getElementById('latitud'), lng: document.getElementById('longitud')};
-      
+          
         // Create a map object and specify the DOM element for display.
         var mapInmueble = new google.maps.Map(document.getElementById('mapInmueble'), {
           center: {lat: -34.9036100, lng: -56.1640446}, 
