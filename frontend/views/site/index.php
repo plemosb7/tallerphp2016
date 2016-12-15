@@ -42,43 +42,15 @@ $this->title = 'Taller de PHP 2016';
 </script>
    
     
-<form name="buscador" method="post" action="index.php?r=site/buscador">
-    Nombre:<input type="text" name="nombre" value="">
-    <input type="submit"/>
+<form name="buscador" method="post" action="index.php">
+    Dormitorios:<input type="text" id="cantDorm" value="">
+    Baños:<input type="text" id="cantBanos" value="">
+    Garage:<input type="text" id="garage" value="">
+    Patio:<input type="text" id="patio" value="">
+    <input type="button" id="idButtonEnviar" value="Buscar"/>
     
 </form>
-  <body>
-   <div class="row2">
-   <div class="col-xs-3">
-    <label for="disabledTextInput">Dormitorios</label>
-  </div>    
   
-  <div class="col-xs-3">
-    <label for="disabledTextInput">Baños</label>
-  </div>
-  
-  <div class="col-xs-3">
-    <label for="disabledTextInput">Patio</label>
-  </div>
-  
-   <div class="col-xs-3">
-    <label for="disabledTextInput">Garage</label>
-  </div>
-  <div class="col-xs-3">
-    <input type="text" class="form-control">
-  </div> 
-  <div class="col-xs-3">
-    <input type="text" class="form-control">
-  </div>
-  <div class="col-xs-3">
-    <input type="text" class="form-control" >
-  </div>
-  <div class="col-xs-3">
-    <input type="text" class="form-control">
-  </div>
-       
-        <button type="button" class="btn btn-primary btn-lg">Buscar</button>
-</div>
     <div id="map" style="width:900px;height:450px; margin: auto"></div>
     
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuYHJ6iStsZb1UYtUDZ3G7yeb0Zd4f0i4&callback=initMap"

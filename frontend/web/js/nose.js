@@ -10,16 +10,13 @@ $("document").ready(function(){
         xhr.setRequestHeader ("Authorization", "Bearer " + accessToken);
     },
     method: "GET",
-    url: apiRoot + "/tipoinmueble"
+    url: apiRoot + "/inmueble/search2?"
   })
   .done(function( inmuebles ) {
     console.log(inmuebles);
 
-    $.each(inmuebles, function(index, tipoinmueble) {
+    $.each(inmuebles, function(index, inmueble) {
       
-       if(tipoinmueble.id===id){
-           return tipoinmueble.nombre;
-       }
        
         
 
