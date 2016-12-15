@@ -26,4 +26,27 @@ class InmuebleController extends ActiveController
         return $query->all();
         
     }
+    public function actionSearch2($cantBanos,$cantDorm )
+    {
+          $query = Inmueble::find();
+        
+        if (isset($cantBanos)) {
+             // grid filtering conditions
+            $query->andFilterWhere([
+                'cantBanos' => $cantBanos,
+            ]);
+        }
+        if (isset($cantDorm)) {
+             // grid filtering conditions
+            $query->andFilterWhere([
+                'cantDorm' => $cantDorm,
+            ]);
+        }
+       
+
+        // use dektrium/user/helper/Password
+        // Password::hash($password)
+        return $query->all();
+        
+    }
 }
