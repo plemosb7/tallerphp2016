@@ -9,49 +9,29 @@ class InmuebleController extends ActiveController
 {
     public $modelClass = 'common\models\Inmueble';
     
-   public function actionSearch($cantBanos, $cantDorm,  $tipoInmueble_id, $garage,$patio )
+
+    public function actionSearch2($cantBanos,$cantDorm )
     {
-        $query = Inmueble::find();
+          $query = Inmueble::find();
         
         if (isset($cantBanos)) {
              // grid filtering conditions
             $query->andFilterWhere([
-                'cantDorm' => "4",    
+                'cantBanos' => $cantBanos,
             ]);
         }
-       
         if (isset($cantDorm)) {
              // grid filtering conditions
             $query->andFilterWhere([
                 'cantDorm' => $cantDorm,
             ]);
         }
-        if (isset($tipoInmueble_id)) {
-             // grid filtering conditions
-            $query->andFilterWhere([
-                'tipoInmueble_id' => $tipoInmueble_id,
-            ]);
-        }
-        
-        if (isset($garage)) {
-             // grid filtering conditions
-            $query->andFilterWhere([
-                'garage' => $garage,
-            ]);
-        }
-        
-        if (isset($patio)) {
-             // grid filtering conditions
-            $query->andFilterWhere([
-                'patio' => $patio,
-            ]);
-        }
-        
+       
 
         // use dektrium/user/helper/Password
         // Password::hash($password)
         return $query->all();
         
     }
-    
+
 }
