@@ -15,31 +15,6 @@ $this->title = 'Taller de PHP 2016';
         .carousel-inner { text-align: center; }
 .carousel .item > img { display: inline-block; }
     </style>
-    
-    <script>
-    function initMap() {
-          
-          
-        // Create a map object and specify the DOM element for display.
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.9036100, lng: -56.1640446}, 
-          scrollwheel: false,
-          zoom: 13
-        });
-             
-     ubicacion(map);
-  }    
-  
-  function ubicacion(map){
-      var myLatLng = {lat: -34.9036100, lng: -56.1640446};
-      var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Marcador con el nombre'
-      });
-      
-  }
-</script>
    
     
 <form name="buscador" method="post" action="index.php">

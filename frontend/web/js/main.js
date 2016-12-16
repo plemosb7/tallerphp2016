@@ -1,4 +1,38 @@
 var apiRoot = 'http://localhost/tallerphp2016/api/v1';
+function initMap() {
+          
+          
+        // Create a map object and specify the DOM element for display.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.9036100, lng: -56.1640446}, 
+          scrollwheel: false,
+          zoom: 13
+        });
+       
+      $.ajax({
+            method: 'GET',
+            url: 'http://localhost/tallerphp2016/api/v1/inmueble'
+        }).done(function(data) {
+        
+        var infowindow = new google.maps.InfoWindow();
+        var marker, i;
+        
+            $.each(data, function(index, inmueble) {
+                    marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(inmueble.latitud, inmueble.longitud),
+                            map: map
+                    });
+                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        infowindow.setContent('<a href="http://localhost/tallerphp2016/frontend/web/index.php?r=site/buscarinmueble&id='+inmueble.id+'"><span class="fa fa-search-plus"></span> '+inmueble.nombre+'</a>');
+                        infowindow.open(map, marker);
+                    }
+                    })(marker, i));
+            });
+        });
+    google.maps.event.addDomListener(window, 'load');       
+
+}  
 
 function listarInmuebles(){
      $('.row').html('');
@@ -129,6 +163,7 @@ function listarInmuebles(){
 
 $("document").ready(function(){ 
   listarInmuebles();
+  initMap();
   
   
   $("#idButtonEnviar").click(function(){
