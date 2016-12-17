@@ -2,7 +2,12 @@
 
 namespace api\modules\v1\controllers;
 
+use yii;
+
 use yii\rest\ActiveController;
+use common\models\User;
+use dektrium\user\helpers\Password;
+use common\models\LoginForm;        
 
 class UserController extends ActiveController
 {
@@ -21,4 +26,21 @@ class UserController extends ActiveController
             return ApiResponse::reponseWithStatus(Yii::$app->getRequest()->getBodyParams(), 403);
          }
     }
+    
+    public function actionIniciarsesion($nombre,$contrasena){
+         $query = User::find();
+         $query->andFilterWhere(['username' => $nombre]);
+         $user=$query->one();
+//         return Yii::$app->getSecurity()->validatePassword(contrasena, $user->password_hash);
+//         return Password::validate($contrasena,$user->password_hash);
+        if(Password::validate($contrasena,$user->password_hash)){
+            return 'true';
+        }
+        else{
+            return 'false';
+        }
+        
+    }
+    
+ 
 }

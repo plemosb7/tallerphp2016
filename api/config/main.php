@@ -52,6 +52,7 @@ return [
                 'GET v1/inmueble/search'    => 'v1/inmueble/search',
                 'GET v1/inmueble/search2'    => 'v1/inmueble/search2',
                 'GET v1/user/login'    => 'v1/user/login',
+                'GET v1/user/iniciarsesion'    => 'v1/user/iniciarsesion',
             ],
         ]
     ],
