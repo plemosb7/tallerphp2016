@@ -93,6 +93,11 @@ class SiteController extends Controller
         
     }
     
+    public function actionBuscador($nombre){
+        return $this->render('buscador',['nombre'=>$nombre]);
+        
+    }
+    
 
     /**
      * Logs in a user.
