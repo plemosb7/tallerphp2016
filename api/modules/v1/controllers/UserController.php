@@ -31,6 +31,9 @@ class UserController extends ActiveController
          $query = User::find();
          $query->andFilterWhere(['username' => $nombre]);
          $user=$query->one();
+         if($user==NULL){
+             return 'false';
+         }
 //         return Yii::$app->getSecurity()->validatePassword(contrasena, $user->password_hash);
 //         return Password::validate($contrasena,$user->password_hash);
         if(Password::validate($contrasena,$user->password_hash)){
