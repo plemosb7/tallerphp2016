@@ -53,6 +53,9 @@ return [
                 'GET v1/inmueble/search2'    => 'v1/inmueble/search2',
                 'GET v1/user/login'    => 'v1/user/login',
                 'GET v1/user/iniciarsesion'    => 'v1/user/iniciarsesion',
+                'GET v1/favoritos/crearfavorito'    => 'v1/favoritos/crearfavorito',
+                'GET v1/favoritos/misfavoritos'    => 'v1/favoritos/misfavoritos',
+                
             ],
         ]
     ],
