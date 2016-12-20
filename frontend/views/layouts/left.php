@@ -35,6 +35,19 @@
         <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" id="cerrarSesion" disabled="true">Cerrar Sesion</button>
         <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" id="registro" >Registrarse</button>
 
+        
+        <?= dmstr\widgets\Menu::widget(
+            [
+                'options' => ['class' => 'sidebar-menu'],
+                'items' => [
+//                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
+//                    ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
+//                    ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug']],
+                    ['label' => 'Mis Favoritos', 'url' => ['/site/misfavoritos']],
+                   
+                ],
+            ]
+        ) ?>
         </section>
 
 </aside>

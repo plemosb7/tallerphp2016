@@ -247,4 +247,8 @@ class SiteController extends Controller
 
         return $this->render('saludar',['mensaje' =>$palabra]);
     }
+    
+    public function actionMisfavoritos(){
+        return $this->render('misfavoritos');
+    }
 }
