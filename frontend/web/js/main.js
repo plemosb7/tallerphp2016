@@ -164,7 +164,7 @@ function listarInmuebles(){
 $("document").ready(function(){ 
   listarInmuebles();
   initMap();
-  
+  ('#usuarioLogueado').text('muy anonimo');
   
   $("#idButtonEnviar").click(function(){
       listarInmuebles();

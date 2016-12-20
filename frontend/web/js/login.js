@@ -6,6 +6,7 @@
 //$("document").ready(function(){ 
 //    
 var apiRoot = 'http://localhost/tallerphp2016/api/v1';  
+
 $("#iniciarSesion").click(function(){
 //      $('#valor').val('antesRest');
       $.ajax({
@@ -17,7 +18,8 @@ $("#iniciarSesion").click(function(){
 //        $('#valor').val(response);
         console.log(response);
         if(response==='true'){
-            $('#usuarioLogueado').text($('#usuario').val());
+            localStorage.usuario=$('#usuario').val();
+            $('#usuarioLogueado').text(localStorage.usuario);
             $('#loginForm').hide();
             $('#cerrarSesion').prop('disabled',false);
         }
@@ -25,7 +27,8 @@ $("#iniciarSesion").click(function(){
 });
 
 $("#cerrarSesion").click(function(){
-    $('#usuarioLogueado').text('Anonimo');
+    delete localStorage.usuario
+    $('#usuarioLogueado').text('muy Anonimo');
     $('#usuario').val('');
     $('#contrasena').val('');
     $('#loginForm').show();
@@ -34,6 +37,7 @@ $("#cerrarSesion").click(function(){
   
 var accessToken = $('#accessToken').val();
 $("#registro").click(function(){
+//$hash = Yii::$app->getSecurity()->generatePasswordHash($('#contrasena').val(''));
 $.ajax({
     beforeSend: function (xhr) {
           xhr.setRequestHeader ("Authorization", "Bearer " + accessToken);
@@ -46,6 +50,16 @@ $.ajax({
 })
 
 });
+
+//$("document").ready(function(){ 
+//        ('#usuarioLogueado').text('muy anonimo');
+////    if( localStorage.usuario !== undefined ){
+////        
+////    }
+////    else{
+////        ('#usuarioLogueado').text(localStorage.usuario);
+////    }
+//});
 
 
 //});
