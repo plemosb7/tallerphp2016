@@ -33,6 +33,7 @@
         </form><!-- /form -->
         
         <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" id="cerrarSesion" disabled="true">Cerrar Sesion</button>
+        <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" id="registro" >Registrarse</button>
 
         </section>
 

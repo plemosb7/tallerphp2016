@@ -32,6 +32,20 @@ $("#cerrarSesion").click(function(){
     $('#cerrarSesion').prop('disabled',true);
 });
   
+var accessToken = $('#accessToken').val();
+$("#registro").click(function(){
+$.ajax({
+    beforeSend: function (xhr) {
+          xhr.setRequestHeader ("Authorization", "Bearer " + accessToken);
+      },
+      method: "POST",
+      url: apiRoot + "/user",
+      data: {"username":"example","email":"user3333@exampleds.com"},
+}).done(function(response) {
+        console.log(response);
+})
+
+});
 
 
 //});
