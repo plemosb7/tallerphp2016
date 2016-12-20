@@ -22,9 +22,10 @@ function tablaDeDatos(){
     console.log(inmuebles);
 
     $.each(inmuebles, function(index, inmueble) {
-        let html = '<table>';     
+            
         
         if(inmueble.id==idInmueble){
+            let html = '<table>'; 
 
             html+='<table class="table table-bordered" >'
                 html+='<tbody>'
@@ -82,9 +83,11 @@ function tablaDeDatos(){
 
                 html+='</tbody>'
             html+='</table>'
+            
+            $('.row').append(html);
         }
 
-             $('.row').append(html);
+            
   });
 
     

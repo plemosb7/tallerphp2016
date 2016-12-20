@@ -40,7 +40,7 @@ function buscarImagenes(){
         xhr.setRequestHeader ("Authorization", "Bearer " + accessToken);
     },
     method: "GET",
-    url: apiRoot + "/inmueble",
+    url: apiRoot + "/inmueble"
     
     })
     .done(function( inmuebles ) {

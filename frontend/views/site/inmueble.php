@@ -8,6 +8,11 @@ $this->registerJsFile(
 );
 
 $this->registerJsFile( 
+    'tallerphp2016/frontend/web/js/nose.js', 
+    ['depends' => '\yii\web\JqueryAsset']
+);
+
+$this->registerJsFile( 
     'tallerphp2016/frontend/web/js/buscarid.js', 
     ['depends' => '\yii\web\JqueryAsset']
 );
@@ -22,15 +27,17 @@ $this->title = 'My Yii Application';
     </style>
     
 
-<div class="imagen">
-    
-    
-</div>
+
+
+<div class="imagen"></div>
+<div class="btnFv" style="float: right;"></div>
 <div id="map" style="width:500px;height:290px;float: left;"></div>
 <table class="row">
     
     
 </table>
+
+
 
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuYHJ6iStsZb1UYtUDZ3G7yeb0Zd4f0i4&callback=initMap"

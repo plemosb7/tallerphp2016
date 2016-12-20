@@ -1,8 +1,25 @@
 <?php
+use yii\widgets\ListView;
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+$this->registerJsFile( 
+    'tallerphp2016/frontend/web/js/favoritos.js', 
+    ['depends' => '\yii\web\JqueryAsset']
+);
+/* @var $this yii\web\View */
+
+$this->title = 'My Yii Application';
 ?>
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+<style>
+        .carousel-inner { text-align: center; }
+.carousel .item > img { display: inline-block; }
+    </style>
+    
+
+
+
+<div class="row">
+    
+    
+</div>
 
