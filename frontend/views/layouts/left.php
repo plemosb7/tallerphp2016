@@ -17,14 +17,23 @@
             </div>
             <div class="pull-left info">
                 
-                <p id="usuarioLogueado">Anonimo</p>
-
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <p id="usuarioLogueado">
+                    <script type="text/javascript">  
+                       
+                    if(localStorage.usuario !== undefined){
+                        document.write(localStorage.usuario);
+                    }
+                    else{
+                        document.write('usuario Anonimo');
+                    }
+                    </script>  
+                </p>
             </div>
         </div>
 
         <!-- search form -->
-        <form id="loginForm" class="form-signin" action="left.php" method="post">
+           
+        <form id="loginForm" class="form-signin" action="left.php" method="post" >
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="text" id="usuario" class="form-control" placeholder="Usuario" required autofocus>
                 <input type="password" id="contrasena" class="form-control" placeholder="Contraseña" required>
@@ -32,22 +41,23 @@
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" id="iniciarSesion">Iniciar Sesion</button>
         </form><!-- /form -->
         
-        <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" id="cerrarSesion" disabled="true">Cerrar Sesion</button>
-        <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" id="registro" >Registrarse</button>
-
+        <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" id="cerrarSesion">Cerrar Sesion</button>
         
-        <?= dmstr\widgets\Menu::widget(
-            [
-                'options' => ['class' => 'sidebar-menu'],
-                'items' => [
-//                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-//                    ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
-//                    ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug']],
-                    ['label' => 'Mis Favoritos', 'url' => ['/site/misfavoritos']],
-                   
-                ],
-            ]
-        ) ?>
+        
+        <form id="registerForm" class="form-signin" action="left.php" method="post">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="text" id="emailR" class="form-control" placeholder="Email" required autofocus>
+                <input type="text" id="usuarioR" class="form-control" placeholder="Usuario" required autofocus>
+                <input type="password" id="contrasenaR" class="form-control" placeholder="Contraseña" required>
+                
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="button" id="registro" >Registrarse</button>
+
+        </form>
+        
+        <a href="index.php?r=site/misfavoritos">Mis Favoritos</a>
+       
+        
+       
         </section>
 
 </aside>

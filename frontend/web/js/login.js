@@ -5,7 +5,19 @@
  */
 //$("document").ready(function(){ 
 //    
-var apiRoot = 'http://localhost/tallerphp2016/api/v1';  
+var apiRoot = 'http://localhost/tallerphp2016/api/v1';
+if(localStorage.usuario !== undefined){
+     $('#loginForm').prop('style','display: none');
+     $('#registerForm').prop('style','display: none');
+     $('#cerrarSesion').prop('disabled',false);
+//    document.write(localStorage.usuario);
+}
+else{
+     $('#loginForm').prop('style','display: block');
+     $('#registerForm').prop('style','display: block');
+     $('#cerrarSesion').prop('disabled',true);
+}
+
 $("#iniciarSesion").click(function(){
 //      $('#valor').val('antesRest');
       $.ajax({
@@ -17,23 +29,28 @@ $("#iniciarSesion").click(function(){
 //        $('#valor').val(response);
         console.log(response);
         if(response==='true'){
-            $('#usuarioLogueado').text($('#usuario').val());
-            $('#loginForm').hide();
+            localStorage.usuario=$('#usuario').val();
+            $('#usuarioLogueado').text(localStorage.usuario);
+            $('#loginForm').prop('style','display: none');
+            $('#registerForm').prop('style','display: none');
             $('#cerrarSesion').prop('disabled',false);
         }
     });
 });
 
 $("#cerrarSesion").click(function(){
-    $('#usuarioLogueado').text('Anonimo');
+    delete localStorage.usuario;
+    $('#usuarioLogueado').text('Usuario Anonimo');
     $('#usuario').val('');
     $('#contrasena').val('');
-    $('#loginForm').show();
+    $('#loginForm').prop('style','display: block');
+     $('#registerForm').prop('style','display: block');
     $('#cerrarSesion').prop('disabled',true);
 });
   
 var accessToken = $('#accessToken').val();
 $("#registro").click(function(){
+//$hash = Yii::$app->getSecurity()->generatePasswordHash($('#contrasena').val(''));
 $.ajax({
     beforeSend: function (xhr) {
           xhr.setRequestHeader ("Authorization", "Bearer " + accessToken);
@@ -46,6 +63,16 @@ $.ajax({
 })
 
 });
+
+//$("document").ready(function(){ 
+//        ('#usuarioLogueado').text('muy anonimo');
+////    if( localStorage.usuario !== undefined ){
+////        
+////    }
+////    else{
+////        ('#usuarioLogueado').text(localStorage.usuario);
+////    }
+//});
 
 
 //});
