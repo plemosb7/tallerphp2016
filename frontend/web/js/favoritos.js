@@ -3,71 +3,16 @@ function favoritos(){
     
     var accessToken = $('#accessToken').val();
     var idInmueble = $('#idInmueble').val();
-    var nombreUsuario = $('#usuarioLogueado').text();
+    
   
   $.ajax({
     beforeSend: function (xhr) {
         xhr.setRequestHeader ("Authorization", "Bearer " + accessToken);
     },
     method: "GET",
-    url: apiRoot + "/favoritos/misfavorito?nombreUsuario=" + nombreUsuario
+    url: apiRoot + "/favoritos/misfavoritos?nombreUsuario=" +localStorage.usuario
   })
-  .done(function( favoritos ) {
-    console.log(favoritos);
-
-    $.each(favoritos, function(index, favorito) {
-        imprimirInmueble(favorito.inmueble_id);
-     
-
-    });
-
-
-  });
-    
-    
-    
-    
-}
-
-function imprimirInmuebles(favorito){
-  $('.row').html('');
-     var accessToken = $('#accessToken').val();
-     
-    var cantidadBanos = "";
-    var cantidadDorm= "";
-    var garage= "";
-    var patio="";
-
-
-    cantidadBanos = $('#cantBanos').val();
-    cantidadDorm = $('#cantDorm').val();
-    garage = $('#garage').val();
-    patio = $('#patio').val();
-
-    if(cantidadBanos===null){
-        cantidadBanos="";
-    }
-    if(cantidadDorm===null){
-        cantidadDorm="";
-    }
-
-
-    if(garage===null){
-        garage="";
-    }
-
-    if(patio===null){
-        patio="";
-    }
-    
-    $.ajax({
-      beforeSend: function (xhr) {
-          xhr.setRequestHeader ("Authorization", "Bearer " + accessToken);
-      },
-      method: "GET",
-      url: apiRoot + "/inmueble/search2?cantBanos="+cantidadBanos+"&cantDorm="+cantidadDorm+"&garage="+garage+"&patio="+patio
-    })
-    .done(function( inmuebles ) {
+  .done(function( inmuebles ) {
       console.log(inmuebles);
 
 
@@ -80,7 +25,7 @@ function imprimirInmuebles(favorito){
          var urlFoto1= url+foto1;
          var urlFoto2= url+foto2;
          var urlFoto3= url+foto3;
-          if(inmueble.id==favorito){
+
          let html = '<div>';     
 
           html+='<div class="col-sm-3 col-md-3">'
@@ -141,7 +86,7 @@ function imprimirInmuebles(favorito){
       }
           html+='<a href="index.php?r=site/buscarinmueble&id='+inmueble.id+'">'
           html+=' <h3>'+inmueble.nombre+'</h3>'
-           html+=' <h3>'+cantidadBanos+'</h3>'
+          
           html+='</a>'
           html+=' </div>'
           html+=' </div>'
@@ -151,14 +96,11 @@ function imprimirInmuebles(favorito){
 
 
            $('.row').append(html);
-           }
+
       });
    });
 }
 
-
-
 $("document").ready(function(){ 
-  
-    favoritos();
+  favoritos();
 });

@@ -172,7 +172,7 @@ function listarInmuebles(){
       }
           html+='<a href="index.php?r=site/buscarinmueble&id='+inmueble.id+'">'
           html+=' <h3>'+inmueble.nombre+'</h3>'
-           html+=' <h3>'+cantidadBanos+'</h3>'
+          
           html+='</a>'
           html+=' </div>'
           html+=' </div>'
@@ -194,6 +194,7 @@ $("document").ready(function(){
   
   $("#idButtonEnviar").click(function(){
       listarInmuebles();
+      initMap();
   });
   
 

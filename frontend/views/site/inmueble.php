@@ -19,7 +19,7 @@ $this->registerJsFile(
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = '';
 ?>
 <style>
         .carousel-inner { text-align: center; }
