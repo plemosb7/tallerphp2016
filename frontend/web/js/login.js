@@ -5,7 +5,18 @@
  */
 //$("document").ready(function(){ 
 //    
-var apiRoot = 'http://localhost/tallerphp2016/api/v1';  
+var apiRoot = 'http://localhost/tallerphp2016/api/v1';
+if(localStorage.usuario !== undefined){
+     $('#loginForm').prop('style','display: none');
+     $('#registerForm').prop('style','display: none');
+     $('#cerrarSesion').prop('disabled',false);
+//    document.write(localStorage.usuario);
+}
+else{
+     $('#loginForm').prop('style','display: block');
+     $('#registerForm').prop('style','display: block');
+     $('#cerrarSesion').prop('disabled',true);
+}
 
 $("#iniciarSesion").click(function(){
 //      $('#valor').val('antesRest');
@@ -20,18 +31,20 @@ $("#iniciarSesion").click(function(){
         if(response==='true'){
             localStorage.usuario=$('#usuario').val();
             $('#usuarioLogueado').text(localStorage.usuario);
-            $('#loginForm').hide();
+            $('#loginForm').prop('style','display: none');
+            $('#registerForm').prop('style','display: none');
             $('#cerrarSesion').prop('disabled',false);
         }
     });
 });
 
 $("#cerrarSesion").click(function(){
-    delete localStorage.usuario
-    $('#usuarioLogueado').text('muy Anonimo');
+    delete localStorage.usuario;
+    $('#usuarioLogueado').text('Usuario Anonimo');
     $('#usuario').val('');
     $('#contrasena').val('');
-    $('#loginForm').show();
+    $('#loginForm').prop('style','display: block');
+     $('#registerForm').prop('style','display: block');
     $('#cerrarSesion').prop('disabled',true);
 });
   

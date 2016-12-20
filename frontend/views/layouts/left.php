@@ -17,24 +17,23 @@
             </div>
             <div class="pull-left info">
                 
-                <p id="usuarioLogueado"><script type="text/javascript">  
-    if(localStorage.usuario !== undefined){
-        document.write(localStorage.usuario);
-    }
-    else{
-        document.write('muy anonimos');
-    }
-          
-      
-</script>  
+                <p id="usuarioLogueado">
+                    <script type="text/javascript">  
+                       
+                    if(localStorage.usuario !== undefined){
+                        document.write(localStorage.usuario);
+                    }
+                    else{
+                        document.write('usuario Anonimo');
+                    }
+                    </script>  
                 </p>
-
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
 
         <!-- search form -->
-        <form id="loginForm" class="form-signin" action="left.php" method="post">
+           
+        <form id="loginForm" class="form-signin" action="left.php" method="post" >
                 <span id="reauth-email" class="reauth-email"></span>
                 <input type="text" id="usuario" class="form-control" placeholder="Usuario" required autofocus>
                 <input type="password" id="contrasena" class="form-control" placeholder="Contraseña" required>
@@ -56,14 +55,9 @@
         </form>
         
         <a href="index.php?r=site/misfavoritos">Mis Favoritos</a>
+       
         
-        <a href="javascript:void(0)" id="emailTo">email to</a>
-        
-        <script type="text/javascript">
-            $("#emailTo").click(function(){
-            $.get("site/misfavoritos", function(data){$("#contenido").html(data);}
-            });
-        </script>
+       
         </section>
 
 </aside>
